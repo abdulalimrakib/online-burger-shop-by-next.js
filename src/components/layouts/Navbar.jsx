@@ -34,11 +34,11 @@ const Navbar = () => {
           <VscAccount className="text-[20px]" />
         </div>
         <ul className="hidden sm:flex justify-between items-center gap-2">
-          <li className="bg-primary text-white px-7 py-2 rounded-full">
-            <Link href="#">Sign Up</Link>
+          <li>
+            <Link href="#" className="bg-primary text-white px-7 py-2 rounded-full">Sign Up</Link>
           </li>
-          <li className="bg-primary text-white px-7 py-2 rounded-full">
-            <Link href="#">Login</Link>
+          <li>
+            <Link href="#" className="bg-primary text-white px-7 py-2 rounded-full">Login</Link>
           </li>
         </ul>
         <div>
