@@ -1,7 +1,13 @@
-import { Inter } from "next/font/google";
+import { Ubuntu } from "next/font/google"; // font of this project
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Navbar from "@/components/layouts/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -10,8 +16,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-full">
+      <body
+        className={cn(
+          "relative h-full font-sans antialiased bg-background",
+          ubuntu.className
+        )}
+      >
+        <MaxWidthWrapper >
+          <Navbar/>
+          <main className="relative flex flex-col min-h-screen">
+            <div className="flex-grow flex-1">{children}</div>
+          </main>
+        </MaxWidthWrapper>
+      </body>
     </html>
   );
 }
