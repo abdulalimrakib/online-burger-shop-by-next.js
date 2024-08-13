@@ -19,13 +19,13 @@ export default function RootLayout({ children }) {
     <html lang="en" className="h-full">
       <body
         className={cn(
-          "relative h-full font-sans antialiased bg-background",
+          "h-full font-sans antialiased bg-background",
           ubuntu.className
         )}
       >
         <MaxWidthWrapper >
           <Navbar/>
-          <main className="relative flex flex-col min-h-screen">
+          <main className="flex flex-col min-h-screen">
             <div className="flex-grow flex-1">{children}</div>
           </main>
         </MaxWidthWrapper>
