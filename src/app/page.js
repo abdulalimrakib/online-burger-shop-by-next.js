@@ -1,5 +1,7 @@
 import FoodCard from "@/components/FoodCard";
+import AboutUs from "@/components/layouts/AboutUs";
 import BestSellerSection from "@/components/layouts/BestSellerSection";
+import ContactUs from "@/components/layouts/ContactUs";
 import HeroSection from "@/components/layouts/HeroSection";
 
 export default function Home() {
@@ -34,6 +36,8 @@ export default function Home() {
           price={10}
         />
       </div>
+      <AboutUs />
+      <ContactUs />
     </main>
   );
 }
