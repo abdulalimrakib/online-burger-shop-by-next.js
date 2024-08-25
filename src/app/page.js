@@ -1,8 +1,8 @@
-import FoodCard from "@/components/FoodCard";
-import AboutUs from "@/components/layouts/AboutUs";
-import BestSellerSection from "@/components/layouts/BestSellerSection";
-import ContactUs from "@/components/layouts/ContactUs";
-import HeroSection from "@/components/layouts/HeroSection";
+import FoodCard from "../components/FoodCard";
+import AboutUs from "../components/layouts/AboutUs";
+import BestSellerSection from "../components/layouts/BestSellerSection";
+import ContactUs from "../components/layouts/ContactUs";
+import HeroSection from "../components/layouts/HeroSection";
 
 export default function Home() {
   return (

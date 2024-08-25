@@ -1,8 +1,8 @@
 import { Ubuntu } from "next/font/google"; // font of this project
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import Navbar from "@/components/layouts/Navbar";
+import { cn } from "../lib/utils";
+import MaxWidthWrapper from "../components/MaxWidthWrapper";
+import Navbar from "../components/layouts/Navbar";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -19,13 +19,13 @@ export default function RootLayout({ children }) {
     <html lang="en" className="h-full">
       <body
         className={cn(
-          "h-full font-sans antialiased bg-background",
+          "h-full font-sans antialiased bg-white",
           ubuntu.className
         )}
       >
-        <MaxWidthWrapper >
-          <Navbar/>
+        <MaxWidthWrapper>
           <main className="flex flex-col min-h-screen">
+            <Navbar />
             <div className="flex-grow flex-1">{children}</div>
           </main>
         </MaxWidthWrapper>
