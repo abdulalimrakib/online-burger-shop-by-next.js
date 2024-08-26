@@ -29,16 +29,23 @@ const Navbar = () => {
           </ul>
         </nav>
       </div>
-      <div className="text-xl font-bold text-gray-800 flex justify-between items-center gap-2">
+      <div className="text-xl font-semibold text-gray-800 flex justify-between items-center gap-2">
         <div className="block sm:hidden">
           <VscAccount className="text-[20px]" />
         </div>
         <ul className="hidden sm:flex justify-between items-center gap-2">
           <li>
-            <Link href="#" className="bg-primary text-white px-7 py-2 rounded-full">Sign Up</Link>
+            <Link
+              href="/login"
+              className=" border px-7 py-2 rounded-full"
+            >
+              Login
+            </Link>
           </li>
           <li>
-            <Link href="#" className="bg-primary text-white px-7 py-2 rounded-full">Login</Link>
+            <Link href="/sign-up" className="bg-primary text-white px-7 py-2 rounded-full">
+              Sign Up
+            </Link>
           </li>
         </ul>
         <div>
