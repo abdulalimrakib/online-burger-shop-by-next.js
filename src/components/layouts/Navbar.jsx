@@ -4,8 +4,12 @@ import React from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { FiMenu } from "react-icons/fi";
 import { VscAccount } from "react-icons/vsc";
+import { auth, signOut } from "../../auth";
+import Image from "next/image";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await auth();
+
   return (
     <div className="flex justify-between items-center py-4">
       <div className="flex justify-between items-center gap-16">
@@ -35,17 +39,41 @@ const Navbar = () => {
         </div>
         <ul className="hidden sm:flex justify-between items-center gap-2">
           <li>
-            <Link
-              href="/login"
-              className=" border px-7 py-2 rounded-full"
-            >
-              Login
-            </Link>
+            {!session?.user ? (
+              <Link href="/login" className=" border px-7 py-2 rounded-full">
+                Login
+              </Link>
+            ) : (
+              <Link href={""} className="flex justify-center items-center">
+                <Image
+                  height={35}
+                  width={35}
+                  src={session?.user?.image}
+                  className="rounded-full"
+                />
+              </Link>
+            )}
           </li>
           <li>
-            <Link href="/sign-up" className="bg-primary text-white px-7 py-2 rounded-full">
-              Sign Up
-            </Link>
+            {!session?.user ? (
+              <Link
+                href="/sign-up"
+                className="bg-primary text-white px-7 py-2 rounded-full"
+              >
+                Sign Up
+              </Link>
+            ) : (
+              <form
+                action={async () => {
+                  "use server";
+                  await signOut({redirectTo:'/login'});
+                }}
+              >
+                <button className="bg-primary text-white px-7 py-2 rounded-full">
+                  Sign out
+                </button>
+              </form>
+            )}
           </li>
         </ul>
         <div>

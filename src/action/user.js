@@ -24,13 +24,12 @@ const logIn = async (formData) => {
 };
 
 const signUp = async (formData) => {
-  const firstName = await formData.get("firstName");
-  const lastName = await formData.get("lastName");
+  const name = await formData.get("name");
   const email = await formData.get("email");
   const password = await formData.get("password");
   const confirmPassword = await formData.get("confirmPassword");
 
-  if (!firstName || !lastName || !email || !password || !confirmPassword) {
+  if (!name || !email || !password || !confirmPassword) {
     throw new error("Fill all fields");
   }
 
@@ -43,7 +42,7 @@ const signUp = async (formData) => {
 
   const hashPassword = await hash(password, 12);
 
-  await User.create({ firstName, lastName, email, password: hashPassword });
+  await User.create({ name, email, password: hashPassword });
   console.log("User seccessfully created");
   redirect("/login");
 };

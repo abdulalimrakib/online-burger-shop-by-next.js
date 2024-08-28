@@ -1,9 +1,15 @@
 import Link from "next/link";
 import React from "react";
 import { logIn } from "../../action/user";
-import { signIn } from "../../auth";
+import { auth, signIn } from "../../auth";
+import { redirect } from "next/navigation";
 
-const Login = () => {
+const Login = async () => {
+  const session = await auth();
+  if (session?.user) {
+    redirect("/");
+  }
+
   return (
     <div>
       <div className="max-w-md border p-8 mx-auto bg-white rounded-xl space-y-3 shadow-xl">
@@ -40,7 +46,7 @@ const Login = () => {
         <form
           action={async () => {
             "use server";
-            await signIn("google");
+            await signIn("google", { redirectTo: "/" });
           }}
         >
           <button className="w-full px-4 py-3 rounded-md hover:bg-gray-200 text-lg font-medium flex justify-center items-center gap-3 border duration-200">

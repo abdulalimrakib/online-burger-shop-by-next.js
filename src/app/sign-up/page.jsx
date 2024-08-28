@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { signUp } from "../../action/user";
+import { signIn } from "../../auth";
 
 const SignUp = () => {
   return (
@@ -10,24 +11,13 @@ const SignUp = () => {
       </h1>
       <form action={signUp} className="space-y-6">
         <div className="space-y-2 text-sm">
-          <label htmlFor="firstName" className="block">
-            First Name
+          <label htmlFor="name" className="block">
+            User Name
           </label>
           <input
             type="text"
-            name="firstName"
-            placeholder="firstName"
-            className="w-full px-4 py-3 rounded-md border border-indigo-300 focus:outline-none focus:ring"
-          />
-        </div>
-        <div className="space-y-2 text-sm">
-          <label htmlFor="lastName" className="block">
-            Last Name
-          </label>
-          <input
-            type="text"
-            name="lastName"
-            placeholder="lastName"
+            name="name"
+            placeholder="Your Name"
             className="w-full px-4 py-3 rounded-md border border-indigo-300 focus:outline-none focus:ring"
           />
         </div>
@@ -68,7 +58,12 @@ const SignUp = () => {
           Sign Up
         </button>
       </form>
-      <div>
+      <form
+        action={async () => {
+          "use server";
+          await signIn("google", { redirectTo: "/" });
+        }}
+      >
         <button className="w-full px-4 py-3 rounded-md bg-gray-200 text-lg font-medium flex justify-center items-center gap-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +90,7 @@ const SignUp = () => {
           </svg>
           Sign in with google
         </button>
-      </div>
+      </form>
       <p className="flex justify-center items-center gap-2">
         Already have an account?
         <Link href={"./login"} className="text-indigo-500">
